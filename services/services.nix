@@ -1,9 +1,15 @@
 { config, pkgs, ... }: {
   imports =
     [
-      ./picom.nix
       ./sound.nix
       ./xserver.nix
-      ./redshift.nix
+      ./preload.nix
+      ./warp.nix
+      #./picom.nix
+      #./redshift.nix
+      #./xcape.nix
+      #./keyring.nix
+      #./blueman.nix
+      #./flatpak.nix
     ];
 }

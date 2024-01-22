@@ -5,6 +5,9 @@
     ./misc.nix
     ./locale.nix
     ./packages.nix
+    ./bluetooth.nix
+    ./sessionVariables.nix
     ./bootloader.nix
+    ./sudoRules.nix
   ];
 }

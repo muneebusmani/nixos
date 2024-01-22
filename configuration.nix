@@ -8,7 +8,6 @@
   imports =
     [
       ./system/system.nix
-      ./home-manager/home.nix
       ./performance/performance.nix
       ./programs/programs.nix
       ./services/services.nix
