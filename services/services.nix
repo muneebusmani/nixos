@@ -5,6 +5,7 @@
       ./xserver.nix
       ./preload.nix
       ./warp.nix
+      ./gvfs.nix
       #./picom.nix
       #./redshift.nix
       #./xcape.nix

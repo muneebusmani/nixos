@@ -27,10 +27,12 @@ in
     partition-manager
     power-profiles-daemon
     sddm-kcm
-    caffeine-ng
+    #caffeine-ng
     preload
     neofetch
     cloudflare-warp
+    motrix
+    android-tools
 
     # System Tools
     lazygit
@@ -80,6 +82,7 @@ in
     # internet
     discord
     microsoft-edge
+    google-chrome
     skypeforlinux
     telegram-desktop
     whatsapp-for-linux
@@ -99,8 +102,9 @@ in
     libsForQt5.kdecoration
     libsForQt5.applet-window-appmenu
     libsForQt5.applet-window-buttons
-    libsForQt5.ktorrent
-    libsForQt5.kget
     libsForQt5.kmail
+    libsForQt5.kcalc
+    libsForQt5.bismuth
+    kde-rounded-corners
   ];
 }
