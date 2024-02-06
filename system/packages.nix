@@ -54,8 +54,8 @@ in
     eza
     nix-init
     btop
-    nvtop
-    gwe
+    #nvtop
+    #gwe
     htop
     libinput
 
