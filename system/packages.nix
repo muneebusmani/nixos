@@ -82,11 +82,11 @@ in
     # internet
     discord
     microsoft-edge
-    google-chrome
+    #google-chrome
     skypeforlinux
     telegram-desktop
     whatsapp-for-linux
-    firefox
+    #firefox
     thunderbird
     qbittorrent
 

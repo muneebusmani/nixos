@@ -11,7 +11,6 @@
       ./performance/performance.nix
       ./programs/programs.nix
       ./services/services.nix
-      ./garuda.nix
     ];
   system.stateVersion = "23.11"; # Did you read the comment?
 }
