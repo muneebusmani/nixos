@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    garuda.url = "gitlab:garuda-linux/garuda-nix-subsystem/stable";
+    garuda.url = "gitlab:garuda-linux/garuda-nix-subsystem/unstable";
   };
 
   outputs = { garuda, nixpkgs, ... }: {
