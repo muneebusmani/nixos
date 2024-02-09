@@ -106,5 +106,22 @@ in
     libsForQt5.kcalc
     libsForQt5.bismuth
     kde-rounded-corners
+
+
+
+
+  xfce.xfce4-whiskermenu-plugin
+  xfce.xfce4-volumed-pulse
+  xfce.xfce4-weather-plugin
+  xfce.xfce4-taskmanager
+  xfce.xfce4-systemload-plugin
+  xfce.xfce4-pulseaudio-plugin
+  xfce.xfce4-notes-plugin
+  xfce.xfce4-netload-plugin
+  #xfce.xfce4-namebar-plugin
+  xfce.xfce4-docklike-plugin
+  xfce.xfce4-dockbarx-plugin
+  redshift
+  geoclue2
   ];
 }

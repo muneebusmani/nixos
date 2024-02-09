@@ -5,9 +5,8 @@
     layout = "us";
     xkbVariant = "";
     desktopManager = {
-      plasma5 = {
-        enable = true;
-      };
+      plasma5.enable = true;
+      xfce.enable = true;
     };
     displayManager = {
       sddm = {

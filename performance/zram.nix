@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   zramSwap = {
     enable = true;
-    memoryPercent = 100;
+    #memoryPercent = 400;
   };
 }
