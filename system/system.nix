@@ -9,5 +9,6 @@
     ./sessionVariables.nix
     ./bootloader.nix
     ./sudoRules.nix
+    ./swap.nix
   ];
 }

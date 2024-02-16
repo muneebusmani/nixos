@@ -2,6 +2,7 @@
   services.xserver = {
     enable = true;
     dpi = 125;
+    exportConfiguration = true;
     layout = "us";
     xkbVariant = "";
     desktopManager = {

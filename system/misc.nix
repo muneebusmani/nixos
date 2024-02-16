@@ -3,8 +3,6 @@
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Karachi";
   environment.pathsToLink = [ "/libexec" ];
-  powerManagement.cpuFreqGovernor = "schedutil";
-  services.thermald.enable = true;
   system.autoUpgrade = {
   	enable = true;
   	allowReboot=true;

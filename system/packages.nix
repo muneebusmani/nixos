@@ -106,7 +106,10 @@ in
     libsForQt5.kcalc
     libsForQt5.bismuth
     kde-rounded-corners
-
+    xorg.xf86inputevdev
+    xorg.xinit
+    gnome.dconf-editor
+    dconf
 
 
 
@@ -123,5 +126,6 @@ in
   xfce.xfce4-dockbarx-plugin
   redshift
   geoclue2
+  firefox
   ];
 }
