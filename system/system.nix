@@ -10,5 +10,6 @@
     ./bootloader.nix
     ./sudoRules.nix
     ./swap.nix
+    #./brew.nix
   ];
 }

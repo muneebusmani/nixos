@@ -2,10 +2,10 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Karachi";
-  environment.pathsToLink = [ "/libexec" ];
+  #environment.pathsToLink = [ "/libexec" ];
   system.autoUpgrade = {
-  	enable = true;
-  	allowReboot=true;
+    enable = true;
+    allowReboot = true;
   };
   nixpkgs.config = {
     allowUnfree = true;
