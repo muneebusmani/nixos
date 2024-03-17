@@ -7,10 +7,10 @@
 {
   imports =
     [
+      ./performance.nix
+      ./services.nix
       ./system/system.nix
-      ./performance/performance.nix
-      ./programs/programs.nix
-      ./services/services.nix
+      ./home-manager/home.nix
     ];
   system.stateVersion = "24.05";
   }
