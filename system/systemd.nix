@@ -1,5 +1,4 @@
-{ config, pkgs, ... }: {
-  #services.warp.enable = true;
+{config, pkgs, ...}:{
   systemd.packages = with pkgs; [
     cloudflare-warp
   ];

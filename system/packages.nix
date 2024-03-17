@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  programs.dconf.enable = true;
+  programs.zsh.enable = true;
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
     gedit # text editor
