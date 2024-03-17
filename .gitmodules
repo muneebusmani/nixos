@@ -1,3 +1,4 @@
 [submodule "home-manager"]
-	path = home-manager
+	path = nixos/home-manager
 	url = https://github.com/muneebusmani/home-manager
+
