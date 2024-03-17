@@ -10,7 +10,7 @@
       ./performance.nix
       ./services.nix
       ./system/system.nix
-      /etc/nixos/home-manager/home.nix
+      /home/muneeb/dotfiles/nixos/home-manager/home.nix
     ];
   system.stateVersion = "24.05";
   }
