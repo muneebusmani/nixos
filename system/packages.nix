@@ -1,38 +1,38 @@
 { config, pkgs, ... }:
-let
-  unstableTarball =
-    fetchTarball
-      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
-  nurTarball =
-    (builtins.fetchTarball { url = "https://github.com/nix-community/NUR/archive/master.tar.gz"; sha256 = "04387gzgl8y555b3lkz9aiw9xsldfg4zmzp930m62qw8zbrvrshd"; });
-in
 {
-  nixpkgs.config = {
-    packageOverrides = pkgs: {
-      unstable = import unstableTarball {
-        config = config.nixpkgs.config;
-      };
-      nur = import nurTarball {
-        inherit pkgs;
-      };
-    };
-  };
-
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gedit # text editor
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    gnome-terminal
+    epiphany # web browser
+    geary # email reader
+    evince # document viewer
+    gnome-characters
+    totem # video player
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+  ]);
   environment.systemPackages = with pkgs; [
     # Misc.
-    obs-studio
-    tigervnc
     vlc
-    zoom
-    partition-manager
     power-profiles-daemon
-    sddm-kcm
-    #caffeine-ng
+    caffeine-ng
     preload
     neofetch
     cloudflare-warp
-    motrix
     android-tools
+    #motrix
+    #sddm-kcm
+    #obs-studio
+    #zoom
+    #partition-manager
+    #tigervnc
 
     # System Tools
     lazygit
@@ -54,8 +54,6 @@ in
     eza
     nix-init
     btop
-    #nvtop
-    #gwe
     htop
     libinput
 
@@ -70,62 +68,54 @@ in
 
     # Theming
     beauty-line-icon-theme
-    catppuccin-sddm-corners
     sweet
     nerdfonts
     font-awesome
     font-awesome_5
     font-awesome_4
-    gucharmap
-    catppuccin-kvantum
+    #gucharmap
+    #catppuccin-sddm-corners
+    #catppuccin-kvantum
 
     # internet
     discord
     microsoft-edge
-    #google-chrome
     skypeforlinux
     telegram-desktop
     whatsapp-for-linux
-    #firefox
     thunderbird
     qbittorrent
+    ani-cli
+    #google-chrome
+    #firefox
 
     # Graphics
     figma-linux
-    inkscape
+    #inkscape
 
     # Kde related stuff
-    libsForQt5.kpmcore
-    libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.full
-    libsForQt5.kdecoration
-    libsForQt5.applet-window-appmenu
-    libsForQt5.applet-window-buttons
-    libsForQt5.kmail
-    libsForQt5.kcalc
-    libsForQt5.bismuth
-    kde-rounded-corners
-    xorg.xf86inputevdev
-    xorg.xinit
+    #libsForQt5.kpmcore
+    #libsForQt5.qt5.qtgraphicaleffects
+    #libsForQt5.full
+    #libsForQt5.kdecoration
+    #libsForQt5.applet-window-appmenu
+    #libsForQt5.applet-window-buttons
+    #libsForQt5.kmail
+    #libsForQt5.kcalc
+    #libsForQt5.bismuth
+    #kde-rounded-corners
+    #xorg.xf86inputevdev
+    #xorg.xinit
+    #libsForQt5.qtstyleplugin-kvantum
+    
     gnome.dconf-editor
+    gnome.gnome-tweaks
+    gradience
+    adw-gtk3
     dconf
-
-
-
-  xfce.xfce4-whiskermenu-plugin
-  xfce.xfce4-volumed-pulse
-  xfce.xfce4-weather-plugin
-  xfce.xfce4-taskmanager
-  xfce.xfce4-systemload-plugin
-  xfce.xfce4-pulseaudio-plugin
-  xfce.xfce4-notes-plugin
-  xfce.xfce4-netload-plugin
-  #xfce.xfce4-namebar-plugin
-  xfce.xfce4-docklike-plugin
-  xfce.xfce4-dockbarx-plugin
-  redshift
-  geoclue2
-  firefox
+    gnomeExtensions.hide-top-bar
+    gnomeExtensions.hide-activities-button
+    gnomeExtensions.hide-top-bar
+    adwaita-qt
   ];
 }

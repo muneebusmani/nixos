@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
-{
-  services.preload.enable = true;
-}
+{config,pkgs,lib,...}:{
+    services.preload.enable = true;
+  }

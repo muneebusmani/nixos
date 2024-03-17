@@ -1,8 +1,9 @@
-{ config,pkgs }:{
-xdg.portal. = {
+{ config,pkgs,lib,... }:{
+xdg.portal = {
 	enable = true;
-	extraPortals = [
-		xdg-desktop-portal-kde
+	extraPortals = with pkgs;[
+	  xdg-desktop-portal-gnome
+	  xdg-desktop-portal-gtk
 	];
 };
 }

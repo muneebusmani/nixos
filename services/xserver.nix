@@ -1,18 +1,24 @@
 { config, pkgs, ... }: {
   services.xserver = {
+    excludePackages = with pkgs; [
+    	xterm
+    ];
     enable = true;
     dpi = 125;
     exportConfiguration = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
     desktopManager = {
-      plasma5.enable = true;
-      xfce.enable = true;
+      gnome.enable = true;
     };
     displayManager = {
-      sddm = {
+      defaultSession = "gnome-xorg";
+      gdm = {
+      	wayland = true;
+	autoSuspend = true;
         enable = true;
-        #theme = "catppuccin-sddm-corners";
       };
     };
   };
