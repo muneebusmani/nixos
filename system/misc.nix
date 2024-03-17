@@ -6,6 +6,7 @@
     allowUnfree = true;
     nvidia.acceptLicense = true;
   };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
   qt = {
     enable = true;
