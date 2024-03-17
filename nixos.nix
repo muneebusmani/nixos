@@ -10,7 +10,7 @@
       ./performance.nix
       ./services.nix
       ./system/system.nix
-      ./home-manager/home.nix
+      /etc/nixos/home-manager/home.nix
     ];
   system.stateVersion = "24.05";
   }
