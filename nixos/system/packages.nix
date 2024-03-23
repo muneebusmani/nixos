@@ -29,6 +29,7 @@
     neofetch
     cloudflare-warp
     android-tools
+    glib
     #motrix
     #sddm-kcm
     #obs-studio
@@ -109,7 +110,7 @@
     #xorg.xf86inputevdev
     #xorg.xinit
     #libsForQt5.qtstyleplugin-kvantum
-    
+
     gnome.dconf-editor
     gnome.gnome-tweaks
     gradience
