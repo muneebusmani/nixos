@@ -2,3 +2,6 @@
 	path = nixos/home-manager
 	url = https://github.com/muneebusmani/home-manager
 
+[submodule "nixos/home-manage"]
+	path = nixos/home-manage
+	url = https://github.com/muneebusmani/home-manager
