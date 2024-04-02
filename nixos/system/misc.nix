@@ -8,9 +8,9 @@
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
+  #qt = {
+  #  enable = true;
+  #  platformTheme = "gnome";
+  #  style = "adwaita-dark";
+  #};
 }

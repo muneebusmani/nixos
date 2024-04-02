@@ -1,9 +1,9 @@
 { config, pkgs, ... }: {
   services = {
     gvfs.enable = true;
-    mysql.enable = true;
-    mysql.package = pkgs.mariadb;
-    preload.enable = true;
+    #mysql.enable = true;
+    #mysql.package = pkgs.mariadb;
+    #preload.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -16,7 +16,7 @@
         xterm
       ];
       enable = true;
-      dpi = 125;
+      dpi = 100;
       exportConfiguration = true;
       xkb = {
         layout = "us";
@@ -28,7 +28,7 @@
       displayManager = {
         defaultSession = "gnome-xorg";
         gdm = {
-          wayland = true;
+          wayland = false;
           autoSuspend = true;
           enable = true;
         };
