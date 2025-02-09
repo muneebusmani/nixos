@@ -258,7 +258,7 @@
     shellIntegration.enableBashIntegration = true;
     shellIntegration.enableFishIntegration = true;
     font.name = "JetBrainsMono Nerd Font";
-    font.package = pkgs.nerdfonts;
+    font.package = pkgs.nerd-fonts.jetbrains-mono;
     font.size = 16;
     settings = {
       scrollback_lines = 10000;

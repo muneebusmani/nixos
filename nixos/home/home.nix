@@ -37,7 +37,6 @@
       zsh-syntax-highlighting
       beauty-line-icon-theme
       sweet
-      nerdfonts
       font-awesome
       font-awesome_5
       font-awesome_4
