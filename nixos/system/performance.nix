@@ -4,14 +4,13 @@
     package = pkgs.ananicy-cpp;
     rulesProvider = pkgs.ananicy-rules-cachyos;
   };
-  swapDevices = {
-    enable = true;
-    size = "16Gi"; # Adjust to your desired size (at least your RAM size, ideally a bit larger)
-    # The path defaults to /swapfile, but you can specify it if you want:
-    # path = "/my/custom/swapfile";
-  };
+  swapDevices = [
+    {
+      device = "/dev/disk/by-uuid/9911ed0a-b2bb-475f-804e-870ca772b16e";
+    }
+  ];
   # Important: Add the resume kernel parameter
-  boot.kernelParams = [ "resume=/swapfile" ]; 
+  boot.kernelParams = [ "resume=UUID=9911ed0a-b2bb-475f-804e-870ca772b16e" ]; 
 
   zramSwap = {
     enable = true;

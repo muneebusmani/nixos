@@ -20,12 +20,12 @@
   };
   # Install the extensions
   environment.systemPackages = with pkgs.gnomeExtensions; [
-    hibernate-status
-    user-theme
+    hibernate-status-button
+    user-themes
     caffeine
-    hidetopbar
+    hide-top-bar
     dash-to-dock
-    blur-my-shell (If you're using it)
+    blur-my-shell
   ];
 
 }

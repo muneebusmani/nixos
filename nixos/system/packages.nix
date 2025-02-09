@@ -11,7 +11,7 @@
     qbittorrent
     ani-cli
     figma-linux
-    gnome.dconf-editor
+    dconf-editor
     gnome.gnome-tweaks
     dconf
     jetbrains.phpstorm
