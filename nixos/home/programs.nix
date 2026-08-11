@@ -11,6 +11,7 @@
           unsetopt beep
           #~/.config/home-manager/neofetch
           . <(zoxide init zsh)
+          . <(mcfly init zsh)
     '';
     shellAliases = {
       "c." = "code .";

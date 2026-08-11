@@ -4,7 +4,6 @@
   nixpkgs.config.allowUnfree = true;
   home = {
     packages = with pkgs; [ # CLI tools for home.nix
-      vim
       nixpkgs-fmt
       power-profiles-daemon
       lazydocker
@@ -65,6 +64,7 @@
       laravel
       zoxide
       glab # Gitlab CLI
+      mcfly
     ];
     username = "muneeb";
     stateVersion = "24.11";
