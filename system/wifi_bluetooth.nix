@@ -3,8 +3,11 @@
   boot.kernelModules = [ "wl" "bluetooth" ];
   # boot.kernelPackages = pkgs.linuxKernel.kernels.linux_zen;
   boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "broadcom-sta-6.30.223.271-59-6.18.43"
+  # ];
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-59-6.18.43"
+    "broadcom-sta-6.30.223.271-63-6.18.44"
   ];
   # boot.extraModulePackages = with config.boot.kernelPackages; [ pkgs.linuxKernel.packages.linux_zen.broadcom_sta ];
   boot.kernelParams = [ "mem_sleep_default=deep" ];

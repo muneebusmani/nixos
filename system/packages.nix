@@ -9,6 +9,7 @@
     # jetbrains.webstorm
     # jetbrains.rider
     libreoffice
+    catppuccin
     # spotify
     # discord
     kitty   

@@ -10,11 +10,14 @@
     	
       ./hardware-configuration.nix
       <nixos-hardware/dell/xps/15-9550/nvidia>
-      # ./system/boot.nix
+      # <home-manager/nixos>
+      # ./home/home.nix
+      ./system/boot.nix
       ./system/locale.nix
       ./system/misc.nix
       ./system/packages.nix
       ./system/sound.nix
+      ./system/gpu.nix
       # ./system/warp.nix
       ./system/wifi_bluetooth.nix
       ./system/gnome.nix
@@ -34,7 +37,7 @@
     #  thunderbird
     ];
   };
-
+  # home-manager.users.muneeb = import ./home/home.nix;
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -47,7 +50,7 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
 	wget
-	neovim
+	neovim-unwrapped
 	vim
 	curl
 	git
@@ -87,3 +90,4 @@ BROWSER = "firefox";
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
+

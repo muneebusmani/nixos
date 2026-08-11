@@ -1,10 +1,11 @@
-
-{ pkgs, ... }:{
-  programs.zsh = {
+{  pkgs, ... }:
+{
+  programs.home-manager.enable = true;
+    programs.zsh = {
     package = pkgs.zsh;
     enable = true;
     autocd = true;
-    initExtra = ''
+    initContent = ''
           setopt nomatch
           setopt notify
           setopt extendedglob
@@ -100,6 +101,7 @@
   };
   programs.tmux = {
     enable = true;
+    shell = "${pkgs.zsh}/bin/zsh";
     plugins = with pkgs; [
       tmuxPlugins.catppuccin
       tmuxPlugins.yank
@@ -135,7 +137,7 @@
           # set -g @yank_selection primary # or 'secondary' or 'clipboard'
           # set -g @continuum-restore 'on'
           # Basic
-          # set -g default-shell /usr/bin/zsh
+          set -g default-shell /home/muneeb/.nix-profile/bin/zsh
           # set -s default-terminal 'tmux-256color'
           set-option -a terminal-features 'alacritty:RGB'
           # set-option -sa terminal-features "tmux-256color,xterm-256color,xterm-kitty:RGB"
@@ -241,17 +243,23 @@
       };
     };
   };
+  programs.delta.enable = true;
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = "Muneeb Usmani";
-    userEmail = "muneebusmani8355@gmail.com";
-    delta.enable = true;
+    settings = {
+        user = {
+          name = "Muneeb Usmani";
+          email = "muneebusmani8355@gmail.com";
+
+          };
+      };
   };
   programs.kitty = {
     extraConfig = "
             hide_window_decorations yes
             x11_hide_window_decorations True
+            shell /usr/bin/env zsh
       ";
     enable = true;
     shellIntegration.mode = "enabled";
@@ -271,4 +279,100 @@
     };
     themeFile = "Catppuccin-Mocha";
   };
+  nixpkgs.config.allowUnfree = true;
+  home = {
+    packages = with pkgs; [ # CLI tools for home.nix
+      nixpkgs-fmt
+      power-profiles-daemon
+      lazydocker
+      caffeine-ng
+      fd
+      ripgrep
+      killall
+      lshw
+      xarchiver
+      xcape
+      xsel
+      unzip
+      git
+      gcc
+      wget
+      ugrep
+      cmake
+      gnumake
+      curl
+      eza
+      nix-init
+      btop
+      htop
+      libinput
+      zsh
+      zsh-autocomplete
+      zsh-autopair
+      zsh-autosuggestions
+      zsh-completions
+      zsh-syntax-highlighting
+      # beauty-line-icon-theme
+      # sweet
+      # font-awesome
+      # font-awesome_5
+      # font-awesome_4
+      # vscode.fhs
+      # neovim-unwrapped
+      # dotnet-sdk_8
+      # nodePackages.nodejs
+      # nodePackages.ts-node
+      # typescript
+      # php84Packages.composer
+      # fzf
+      # bun
+      # luarocks
+      # python3
+      # stylua
+      # rustc
+      # cargo
+      # ruby
+      # mono
+      glib
+      # go
+      # sass
+      # scss-lint
+      # tmux
+      # gh # Github CLI
+      # laravel
+      zoxide
+      # glab # Gitlab CLI
+      mcfly
+    ];
+    username = "muneeb";
+    stateVersion = "26.05";
+    homeDirectory = "/home/muneeb";
+    file = {
+      ideavimrc = {
+        text = ''
+        set clipboard+=unnamedplus
+        nnoremap d "_d
+        vnoremap d "_d
+        nnoremap D "_D
+        vnoremap D "_D
+        nnoremap c "_c
+        vnoremap c "_c
+        nnoremap C "_C
+        vnoremap C "_C
+        set easymotion
+        xnoremap p P
+        xnoremap d "_d
+        '';
+        enable = true;
+        target = ".ideavimrc";
+      };
+      nvidia-offload = {
+        source = ./nvidia-offload;
+        target = ".nvidia-offload";
+        enable = true;
+      };
+    };
+  };
 }
+
+

@@ -2,37 +2,36 @@
   description = "My NixOS Configuration Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05"; 
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05"; 
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }:
     let
-      system = "x86_64-linux"; # Or your system architecture
-      pkgs = nixpkgs.legacyPackages.${system};
-      lib = nixpkgs.lib;
-      baseDir = "/home/muneeb/dotfiles";
-
+      system = "x86_64-linux";
     in {
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
-          system = system;
+        # Replace 'nixos' with your hostname if different
+        nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
           modules = [
-            "${baseDir}/nixos/configuration.nix"
+            ./configuration.nix
+            # Hardware module directly from flake input instead of <nixos-hardware/...>
+            nixos-hardware.nixosModules.dell-xps-15-9550-nvidia
+
+            # Home-Manager NixOS Module
             home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.muneeb = import ./home/home.nix;
+            }
           ];
         };
       };
-
-      homeConfigurations = {
-        muneeb = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
-          modules = [ "${baseDir}/nixos/home/home.nix" ]; # Ensure this file exists!
-        };
-      };
-
     };
 }
