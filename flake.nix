@@ -4,31 +4,33 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    catppuccin.url = "github:catppuccin/nix";
+    nur.url = "github:nix-community/NUR";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, catppuccin, nur, ... }@inputs:
     let
       system = "x86_64-linux";
     in {
       nixosConfigurations = {
-        # Replace 'nixos' with your hostname if different
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs; }; 
           modules = [
             ./configuration.nix
-            # Hardware module directly from flake input instead of <nixos-hardware/...>
+            nur.modules.nixos.default 
             nixos-hardware.nixosModules.dell-xps-15-9550-nvidia
-
-            # Home-Manager NixOS Module
             home-manager.nixosModules.home-manager
+            catppuccin.nixosModules.catppuccin
+            # Add this block to give Home Manager access to Catppuccin
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.muneeb = import ./home/home.nix;
+              home-manager.sharedModules = [
+                catppuccin.homeModules.catppuccin
+              ];
             }
           ];
         };

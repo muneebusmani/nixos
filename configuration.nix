@@ -2,16 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs,inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
     	
       ./hardware-configuration.nix
-      <nixos-hardware/dell/xps/15-9550/nvidia>
-      # <home-manager/nixos>
-      # ./home/home.nix
       ./system/boot.nix
       ./system/locale.nix
       ./system/misc.nix
@@ -20,10 +17,10 @@
       ./system/gpu.nix
       # ./system/warp.nix
       ./system/wifi_bluetooth.nix
-      ./system/gnome.nix
+      ./system/desktop.nix
       ./system/performance.nix
+      ./system/theme.nix
     ];
-
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
@@ -38,6 +35,12 @@
     ];
   };
   # home-manager.users.muneeb = import ./home/home.nix;
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.muneeb = import ./home/home.nix;
+  };
   # Install firefox.
   programs.firefox.enable = true;
 

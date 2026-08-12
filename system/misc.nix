@@ -17,5 +17,30 @@
   nix.settings.trusted-public-keys = [
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
   ];
-
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # stdenv.cc.cc
+    # zlib
+    # fuse3
+    # icu
+    # ncurses
+    # openssl
+    # util-linux
+    # libuuid
+    # libunwind
+    # libusb1
+    # libnotify
+    # glib
+    # xorg.libX11
+    # xorg.libXcursor
+    # xorg.libXrandr
+    # xorg.libXinerama
+    # xorg.libXi
+    # xorg.libXext
+    # xorg.libXfixes
+    # xorg.libXrender
+    # xorg.libXtst
+    # libGL
+    # libGLU
+  ];
 }

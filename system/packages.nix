@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, lib,inputs, ... }:
 {  
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import inputs.nur { inherit pkgs; };
+  };
   environment.systemPackages = with pkgs; [ # GUI tools for configuration.nix
     vlc
     # gnome-tweaks
@@ -10,8 +13,12 @@
     # jetbrains.rider
     libreoffice
     catppuccin
-    # spotify
-    # discord
+    catppuccin-kde
+    # EasyEffects
+    spotify
+    discord
     kitty   
+    bat
+    # nur.repos.username.packageName
     ];
 }
