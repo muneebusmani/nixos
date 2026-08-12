@@ -2,6 +2,14 @@
   nixpkgs.config = {
     allowUnfree = true;
     nvidia.acceptLicense = true; # If you use NVIDIA, keep this and configure drivers
+    permittedInsecurePackages = [
+      "dotnet-sdk-6.0.428"
+      "dotnet-sdk-7.0.410"
+      "aspnetcore-runtime-6.0.36"
+      "aspnetcore-runtime-7.0.20"
+      "broadcom-sta-6.30.223.271-63-7.1.5"
+
+    ];
   };
 
   services.logind.settings.Login = {

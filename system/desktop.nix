@@ -1,12 +1,7 @@
 { pkgs, ... }: {
   services = {
     displayManager.gdm.enable = true;
-
-    # To disable installing GNOME's suite of applications
-    # and only be left with GNOME shell.
-
     gnome = {
-
       core-apps.enable = true;
       core-developer-tools.enable = true;
       games.enable = false;
@@ -14,7 +9,6 @@
       gnome-online-accounts.enable = true;
     };
     tumbler.enable = true;
-
     desktopManager.gnome = {
       enable = true;
       extraGSettingsOverridePackages = [ pkgs.mutter ];

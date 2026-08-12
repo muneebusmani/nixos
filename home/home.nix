@@ -2,6 +2,11 @@
 {
   programs = {
     home-manager.enable = true;
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     zsh = {
       package = pkgs.zsh;
       enable = true;
@@ -12,7 +17,6 @@
         setopt extendedglob
         unsetopt beep
         #~/.config/home-manager/neofetch
-        . <(zoxide init zsh)
         . <(mcfly init zsh)
       '';
       shellAliases = {
@@ -62,9 +66,8 @@
         lazyvim = "NVIM_APPNAME=lazyvim nvim";
       };
       autosuggestion.enable = true;
-      #enableAutosuggestions = true;
       sessionVariables = {
-        #DOTNET_ROOT = "$(dirname $(which dotnet))";
+        DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
         PATH = "$PATH:/home/muneeb/.dotnet/tools";
         ZSH_TMUX_AUTOSTART = true;
         ZSH_TMUX_AUTOQUIT = false;
@@ -79,6 +82,10 @@
         package = pkgs.zsh-syntax-highlighting;
       };
       plugins = [
+        {
+          name = "fzf-tab";
+          src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+        }
         {
           name = "zsh-nix-shell";
           file = "nix-shell.plugin.zsh";
@@ -99,6 +106,41 @@
           "aliases"
           "tmux"
           "vi-mode"
+          "colored-man-pages"
+          "zoxide"
+          "dotnet"
+          "composer"
+          "laravel"
+          "node"
+          "npm"
+          "docker"
+          "docker-compose"
+          "copilot"
+          "web-search"
+          "vi-mode"
+          "ssh"
+          "rsync"
+          "redis-cli"
+          "python"
+          "postgres"
+          "pip"
+          "npm"
+          "ng"
+          "nestjs"
+          "mongocli"
+          "kitty"
+          "git-lfs"
+          "github"
+          "gitfast"
+          "gh"
+          "fzf"
+          "uv"
+          "flutter"
+          "eza"
+          "emoji"
+          "emoji-clock"
+          "aliases"
+          "alias-finder"
         ];
       };
     };
@@ -340,14 +382,9 @@
       # ruby
       # mono
       glib
-      # go
-      # sass
-      # scss-lint
-      # tmux
-      # gh # Github CLI
-      # laravel
+      gh # Github CLI
       zoxide
-      # glab # Gitlab CLI
+      glab # Gitlab CLI
       mcfly
     ];
     username = "muneeb";

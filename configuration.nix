@@ -6,20 +6,20 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
-
     ./hardware-configuration.nix
     ./system/boot.nix
+    ./system/desktop.nix
+    ./system/dev.nix
+    ./system/env.nix
+    ./system/gaming.nix
     ./system/locale.nix
     ./system/misc.nix
+    ./system/nvidia.nix
     ./system/packages.nix
     ./system/sound.nix
-    ./system/gpu.nix
-    # ./system/warp.nix
+    ./system/tweaks.nix
+    ./system/warp.nix
     ./system/wifi_bluetooth.nix
-    ./system/desktop.nix
-    ./system/performance.nix
-    ./system/theme.nix
   ];
 
   # Enable touchpad support (enabled default in most desktopManager).
