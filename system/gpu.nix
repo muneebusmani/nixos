@@ -1,12 +1,20 @@
-# gpu.nix
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.my-gpu;
 in
 {
   options.my-gpu.mode = lib.mkOption {
-    type = lib.types.enum [ "intel" "offload" "sync" ];
+    type = lib.types.enum [
+      "intel"
+      "offload"
+      "sync"
+    ];
     default = "intel";
   };
 
@@ -16,6 +24,9 @@ in
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
+        extraPackages = with pkgs; [
+          libvdpau-va-gl
+        ];
       };
       powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
@@ -32,13 +43,23 @@ in
     # 2. Intel-Only Mode (Default)
     (lib.mkIf (cfg.mode == "intel") {
       system.nixos.tags = [ "nvidia-intel-only" ];
-      
-      # Force disable prime features so they don't bleed in from root config
-      hardware.nvidia.prime.offload.enable = lib.mkForce false;
-      hardware.nvidia.prime.offload.enableOffloadCmd = lib.mkForce false;
-      hardware.nvidia.prime.sync.enable = lib.mkForce false;
-      
-      boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+      hardware = {
+        nvidia = {
+          prime = {
+            # Force disable prime features so they don't bleed in from root config
+            offload.enable = lib.mkForce false;
+            offload.enableOffloadCmd = lib.mkForce false;
+            sync.enable = lib.mkForce false;
+          };
+        };
+      };
+
+      boot.blacklistedKernelModules = [
+        "nouveau"
+        "nvidia"
+        "nvidia_drm"
+        "nvidia_modeset"
+      ];
       services.udev.extraRules = ''
         # Disable NVIDIA GPU
         ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{remove}="1"
@@ -56,8 +77,8 @@ in
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
         prime = {
-          intelBusId = "PCI:0:2:0"; 
-          nvidiaBusId = "PCI:1:0:0"; 
+          intelBusId = "PCI:0:2:0";
+          nvidiaBusId = "PCI:1:0:0";
         };
       };
     })
@@ -65,16 +86,28 @@ in
     # 4. Specific NVIDIA Modes
     (lib.mkIf (cfg.mode == "offload") {
       system.nixos.tags = [ "nvidia-offload" ];
-      hardware.nvidia.prime.offload.enable = lib.mkForce true;
-      hardware.nvidia.prime.offload.enableOffloadCmd = lib.mkForce true;
-      hardware.nvidia.prime.sync.enable = lib.mkForce false;
+      hardware = {
+        nvidia = {
+          prime = {
+            offload.enable = lib.mkForce true;
+            offload.enableOffloadCmd = lib.mkForce true;
+            sync.enable = lib.mkForce false;
+          };
+        };
+      };
     })
 
     (lib.mkIf (cfg.mode == "sync") {
       system.nixos.tags = [ "nvidia-sync" ];
-      hardware.nvidia.prime.sync.enable = lib.mkForce true;
-      hardware.nvidia.prime.offload.enable = lib.mkForce false;
-      hardware.nvidia.prime.offload.enableOffloadCmd = lib.mkForce false;
+      hardware = {
+        nvidia = {
+          prime = {
+            sync.enable = lib.mkForce true;
+            offload.enable = lib.mkForce false;
+            offload.enableOffloadCmd = lib.mkForce false;
+          };
+        };
+      };
     })
   ];
 }

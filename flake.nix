@@ -4,34 +4,51 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    catppuccin.url = "github:catppuccin/nix";
+    # catppuccin.url = "github:catppuccin/nix";
     nur.url = "github:nix-community/NUR";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+
     };
+    # stylix = {
+    #   url = "github:nix-community/stylix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, catppuccin, nur, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      home-manager,
+      # catppuccin,
+      # stylix,
+      nur,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
-    in {
+    in
+    {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs; }; 
+          specialArgs = { inherit inputs; };
           modules = [
+            # stylix.nixosModules.stylix
             ./configuration.nix
-            nur.modules.nixos.default 
+            nur.modules.nixos.default
             nixos-hardware.nixosModules.dell-xps-15-9550-nvidia
             home-manager.nixosModules.home-manager
-            catppuccin.nixosModules.catppuccin
+            # catppuccin.nixosModules.catppuccin
             # Add this block to give Home Manager access to Catppuccin
-            {
-              home-manager.sharedModules = [
-                catppuccin.homeModules.catppuccin
-              ];
-            }
+            # {
+            #   home-manager.sharedModules = [
+            #     catppuccin.homeModules.catppuccin
+            #   ];
+            # }
           ];
         };
       };

@@ -1,5 +1,11 @@
-{ pkgs, config, lib, ...}:{
-  boot.loader = { # ... bootloader settings ...
+{
+  _,
+  ...
+
+}:
+{
+  boot.loader = {
+    # ... bootloader settings ...
     systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
     grub = {
