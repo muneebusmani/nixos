@@ -8,25 +8,24 @@ in
     with pkgs;
     [
       vlc
-      # dconf
-      # dconf-editor
       libreoffice
       spotify
       discord
       kitty
       bat
       nvtopPackages.full
-      pciutils # Helps detect hardware
+      pciutils
       stremio-linux-shell
       stremio-service
       mpv
       linux-wallpaperengine
       firefoxpwa
+
     ]
     ++ map custom [
       # just drop your custom folder names in this list
-      "cosmic-ext-applet-clipboard-manager"
-      "cosmic-ext-applet-emoji-selector"
+      # "cosmic-ext-applet-clipboard-manager"
+      # "cosmic-ext-applet-emoji-selector"
     ];
   programs.firefox.nativeMessagingHosts.packages = with pkgs; [
     firefoxpwa

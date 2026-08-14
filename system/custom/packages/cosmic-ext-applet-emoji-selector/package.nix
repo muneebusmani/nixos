@@ -17,11 +17,10 @@ rustPlatform.buildRustPackage {
     owner = "leb-kuchen";
     repo = "cosmic-ext-applet-emoji-selector";
     rev = "master";
-    hash = "";
+    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   };
 
-  useFetchCargoVendor = true;
-  cargoHash = "";
+  cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
 
   nativeBuildInputs = [
     libcosmicAppHook

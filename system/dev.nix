@@ -82,7 +82,6 @@
     rustc
     cargo
     ruby
-    jdk
 
     # Node Package Managers & CLI Tools
     # npm
@@ -91,14 +90,23 @@
     pnpm
     typescript
     nodemon
-    nodePackages.prettier
+    prettier
+
+    wget
+    neovim-unwrapped
+    wl-clipboard
+    vim
+    curl
+    git
+    gcc
 
     # --- Build Tools ---
     gcc
     gnumake
-    ghostscript
-    mermaid-cli
-    texlive
+    # ghostscript
+    # mermaid-cli
+    # texliveFull
+    # jdk
 
     # --- Database & DevOps Tools ---
     mongosh

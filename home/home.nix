@@ -312,7 +312,14 @@
       x11_hide_window_decorations True
       shell /usr/bin/env zsh
       ";
+
       enable = true;
+      enableGitIntegration = true;
+      autoThemeFiles = {
+        dark = "Catppuccin-Mocha";
+        light = "Catppuccin-Latte";
+        noPreference = "Catppuccin-Mocha";
+      };
       shellIntegration = {
         mode = "enabled";
         enableZshIntegration = true;
@@ -369,27 +376,6 @@
       zsh-autosuggestions
       zsh-completions
       zsh-syntax-highlighting
-      # beauty-line-icon-theme
-      # sweet
-      # font-awesome
-      # font-awesome_5
-      # font-awesome_4
-      # vscode.fhs
-      # neovim-unwrapped
-      # dotnet-sdk_8
-      # nodePackages.nodejs
-      # nodePackages.ts-node
-      # typescript
-      # php84Packages.composer
-      # fzf
-      # bun
-      # luarocks
-      # python3
-      # stylua
-      # rustc
-      # cargo
-      # ruby
-      # mono
       glib
       gh # Github CLI
       zoxide
