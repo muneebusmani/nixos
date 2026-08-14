@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   ...
 }:
@@ -21,12 +20,9 @@
     ./system/warp.nix
     ./system/wifi_bluetooth.nix
     ./system/nordvpn.nix
+    ./system/theme.nix
   ];
-
-  # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."muneeb" = {
     isNormalUser = true;
     description = "muneeb";
@@ -38,7 +34,7 @@
   # home-manager.users.muneeb = import ./home/home.nix;
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    useGlobalPkgs = true;
+    # useGlobalPkgs = true;
     useUserPackages = true;
     users.muneeb = import ./home/home.nix;
 

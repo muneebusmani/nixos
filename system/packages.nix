@@ -20,6 +20,8 @@ in
       mpv
       linux-wallpaperengine
       firefoxpwa
+      tree
+      catppuccin
 
     ]
     ++ map custom [

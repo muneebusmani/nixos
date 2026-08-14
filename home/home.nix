@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  catppuccin = {
+    autoEnable = true;
+    enable = true;
+    flavor = "mocha";
+    accent = "pink";
+  };
   programs = {
     home-manager.enable = true;
     # fzf = {
@@ -235,7 +241,7 @@
         # set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
         # set -g @plugin 'wfxr/tmux-fzf-url'
         # set -g @plugin 'erikw/tmux-powerline'
-        # set -g @catppuccin_flavour 'mocha' # or frappe, macchiato, mocha
+        set -g @catppuccin_flavour 'mocha' # or frappe, macchiato, mocha
         # set -g @catppuccin_window_status_enable "yes"
         # set -g @catppuccin_window_status_icon_enable "yes"
         # set -g @catppuccin_status_default "yes"

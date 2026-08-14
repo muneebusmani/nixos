@@ -13,6 +13,7 @@
 
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    catppuccin.url = "github:catppuccin/nix";
   };
   outputs =
     {
@@ -21,6 +22,7 @@
       nixos-hardware,
       home-manager,
       nur,
+      catppuccin,
       ...
     }@inputs:
     let
@@ -36,6 +38,12 @@
             nur.modules.nixos.default
             nixos-hardware.nixosModules.dell-xps-15-9550-nvidia
             home-manager.nixosModules.home-manager
+            catppuccin.nixosModules.catppuccin
+            {
+              home-manager.sharedModules = [
+                catppuccin.homeModules.catppuccin
+              ];
+            }
           ];
         };
       };
