@@ -103,10 +103,11 @@
     # --- Build Tools ---
     gcc
     gnumake
-    # ghostscript
-    # mermaid-cli
-    # texliveFull
-    # jdk
+    ghostscript
+    mermaid-cli
+    texliveFull
+    jdk
+    lua5_1
 
     # --- Database & DevOps Tools ---
     mongosh
