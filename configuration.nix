@@ -20,6 +20,7 @@
     ./system/tweaks.nix
     ./system/warp.nix
     ./system/wifi_bluetooth.nix
+    ./system/nordvpn.nix
   ];
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -42,8 +43,6 @@
     users.muneeb = import ./home/home.nix;
 
   };
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -60,12 +59,6 @@
     git
     gcc
   ];
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    SUDO_EDITOR = "nvim";
-    BROWSER = "firefox";
-  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

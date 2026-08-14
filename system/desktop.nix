@@ -1,24 +1,11 @@
 { pkgs, ... }: {
+  hardware.system76.power-daemon.enable = true;
   services = {
-    displayManager.gdm.enable = true;
-    gnome = {
-      core-apps.enable = true;
-      core-developer-tools.enable = true;
-      games.enable = false;
-      gnome-keyring.enable = true;
-      gnome-online-accounts.enable = true;
-    };
+    displayManager.cosmic-greeter.enable = true;
+    desktopManager.cosmic.enable = true;
+    system76-scheduler.enable = true;
     tumbler.enable = true;
-    desktopManager.gnome = {
-      enable = true;
-      extraGSettingsOverridePackages = [ pkgs.mutter ];
-      extraGSettingsOverrides = ''
-        [org.gnome.mutter]
-        experimental-features=['scale-monitor-framebuffer']
-      '';
-    };
     xserver = {
-      # ... X server settings ...
       enable = true;
       xkb = {
         layout = "us";
@@ -26,20 +13,19 @@
       };
     };
   };
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-user-docs
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      cosmic-ext-ctl
+      cosmic-ext-tweaks
+      cosmic-ext-calculator
+      cosmic-ext-applet-minimon
+      cosmic-ext-applet-sysinfo
+      cosmic-ext-applet-weather
+      cosmic-ext-applet-caffeine
+      cosmic-ext-applet-privacy-indicator
+      cosmic-ext-applet-external-monitor-brightness
+    ];
+  };
+
   programs.xwayland.enable = true;
-
-  # Install the extensions
-  environment.systemPackages = with pkgs.gnomeExtensions; [
-    hibernate-status-button
-    user-themes
-    caffeine
-    hide-top-bar
-    dash-to-dock
-    blur-my-shell
-  ];
-
 }

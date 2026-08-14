@@ -7,6 +7,7 @@
   # Docker setup
   virtualisation.docker.enable = true;
   users.users.muneeb.extraGroups = [ "docker" ];
+  programs.npm.enable = true;
   services = {
 
     # PostgreSQL (PERN)
@@ -37,6 +38,7 @@
     # PHP-FPM for LNMP
     phpfpm.pools.www = {
       user = "muneeb";
+      group = "nginx";
       settings = {
         "pm" = "dynamic";
         "pm.max_children" = 5;
@@ -72,6 +74,7 @@
     )
     mono
     python314
+    python314Packages.tkinter
     php85
     php85Packages.composer
     nodejs
@@ -81,11 +84,12 @@
     ruby
 
     # Node Package Managers & CLI Tools
-    nodePackages.npm
-    nodePackages.yarn
-    nodePackages.pnpm
-    nodePackages.typescript
-    nodePackages.nodemon
+    # npm
+    lazynpm
+    yarn
+    pnpm
+    typescript
+    nodemon
 
     # --- Build Tools ---
     gcc
@@ -101,7 +105,14 @@
     gh
 
     # --- Editors & CLI Utilities ---
+    codex
+    antigravity-cli
+    antigravity-ide-fhs
+    # gemini-cli
+    ollama
+    lmstudio
     vscode-fhs
+    zed-editor-fhs
     jetbrains.phpstorm
     jetbrains.webstorm
     jetbrains.rider

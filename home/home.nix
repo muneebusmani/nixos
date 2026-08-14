@@ -2,7 +2,12 @@
 {
   programs = {
     home-manager.enable = true;
-    fzf = {
+    # fzf = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    # };
+
+    mcfly = {
       enable = true;
       enableZshIntegration = true;
     };
@@ -16,8 +21,6 @@
         setopt notify
         setopt extendedglob
         unsetopt beep
-        #~/.config/home-manager/neofetch
-        . <(mcfly init zsh)
       '';
       shellAliases = {
         cat = "bat";
@@ -83,6 +86,11 @@
       };
       plugins = [
         {
+          name = "zsh-defer";
+          src = "${pkgs.zsh-defer}/share/zsh-defer";
+          file = "zsh-defer.plugin.zsh";
+        }
+        {
           name = "fzf-tab";
           src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
         }
@@ -115,7 +123,6 @@
           "npm"
           "docker"
           "docker-compose"
-          "copilot"
           "web-search"
           "vi-mode"
           "ssh"
@@ -322,6 +329,8 @@
         enable_audio_bell = false;
         confirm_os_window_close = 0;
         window_padding_width = 5;
+        background_opacity = "0.75";
+        background_blur = "32";
       };
       themeFile = "Catppuccin-Mocha";
     };
@@ -333,7 +342,7 @@
       nixpkgs-fmt
       # power-profiles-daemon
       lazydocker
-      caffeine-ng
+      # caffeine-ng
       fd
       ripgrep
       killall

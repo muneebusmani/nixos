@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   nixpkgs.config = {
     allowUnfree = true;
+    # allowUnsupportedSystem = true;
     nvidia.acceptLicense = true; # If you use NVIDIA, keep this and configure drivers
     permittedInsecurePackages = [
       "dotnet-sdk-6.0.428"
@@ -8,6 +9,7 @@
       "aspnetcore-runtime-6.0.36"
       "aspnetcore-runtime-7.0.20"
       "broadcom-sta-6.30.223.271-63-7.1.5"
+      "broadcom-sta-6.30.223.271-63-7.1.8"
 
     ];
   };
@@ -24,13 +26,13 @@
         "nix-command"
         "flakes"
       ];
-      substituters = [
-        "https://nix-community.cachix.org"
-      ];
-
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
+      # substituters = [
+      #   "https://nix-community.cachix.org"
+      # ];
+      #
+      # trusted-public-keys = [
+      #   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      # ];
     };
     gc = {
       automatic = true;
@@ -49,6 +51,9 @@
     fstrim.enable = true;
   };
   # Enable RAM compression for better multitasking
+  security.sudo.extraConfig = ''
+    Defaults pwfeedback
+  '';
   zramSwap.enable = true;
   programs = {
     gamemode.enable = true;

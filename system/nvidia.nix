@@ -28,7 +28,8 @@ in
           libvdpau-va-gl
         ];
       };
-      powerManagement.cpuFreqGovernor = lib.mkForce "performance";
+      services.tlp.enable = lib.mkForce false;
+      powerManagement.cpuFreqGovernor = lib.mkForce "schedutil";
 
       specialisation = {
         offload.configuration = {
