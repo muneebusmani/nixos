@@ -82,6 +82,7 @@
     rustc
     cargo
     ruby
+    jdk
 
     # Node Package Managers & CLI Tools
     # npm
@@ -90,10 +91,14 @@
     pnpm
     typescript
     nodemon
+    nodePackages.prettier
 
     # --- Build Tools ---
     gcc
     gnumake
+    ghostscript
+    mermaid-cli
+    texlive
 
     # --- Database & DevOps Tools ---
     mongosh
@@ -120,6 +125,10 @@
     fzf
     ripgrep
     fd
+    python314Packages.pynvim
+    lazygit
+    lazydocker
+    sqlite
 
     # --- LSPs & Formatters ---
     tree-sitter

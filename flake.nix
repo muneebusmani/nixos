@@ -34,12 +34,6 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./configuration.nix
-            ({ config, pkgs, ... }: {
-              nix.settings = {
-                substituters = [ "https://cachix.org" ];
-                trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
-              };
-            })
             nur.modules.nixos.default
             nixos-hardware.nixosModules.dell-xps-15-9550-nvidia
             home-manager.nixosModules.home-manager
