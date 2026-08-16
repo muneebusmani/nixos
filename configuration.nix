@@ -22,6 +22,7 @@
     ./system/nordvpn.nix
     ./system/theme.nix
     ./system/plymouth.nix
+    ./system/spotify.nix
   ];
   services.libinput.enable = true;
   users.users."muneeb" = {
