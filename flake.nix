@@ -12,17 +12,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
 
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # nixos-hardware = {
+    #   url = "github:NixOS/nixos-hardware";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     catppuccin.url = "github:catppuccin/nix";
   };
   outputs =
     {
       self,
       nixpkgs,
-      nixos-hardware,
+      # nixos-hardware,
       home-manager,
       nur,
       catppuccin,
+      spicetify-nix,
       ...
     }@inputs:
     let
@@ -34,9 +42,10 @@
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
+            # nixos-hardware.nixosModules.dell-xps-15-9550
+            spicetify-nix.nixosModules.default
             ./configuration.nix
             nur.modules.nixos.default
-            nixos-hardware.nixosModules.dell-xps-15-9550-nvidia
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin
             {

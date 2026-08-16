@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, ... }: {
   # swapDevices = [
   #   { device = "/dev/disk/by-uuid/6efbc3a7-ef84-4d45-ab54-246b426e851b"; }
   # ];
@@ -14,21 +14,24 @@
     priority = 100; # Default priority
   };
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+  powerManagement = {
+    # enable = true;
+    cpuFreqGovernor = lib.mkForce "schedutil";
+  };
+
+  services = {
+    thermald.enable = true;
+    # power-profiles-daemon.enable = true;
+    system76-scheduler.enable = true;
+  };
+
   programs = {
     firefox = {
       enable = true;
       preferences = {
         "widget.gtk.libadwaita-colors.enabled" = false;
+        "ui.systemUsesDarkTheme" = 1; # Enforces dark theme matching Catppuccin Dark/Mocha variants
       };
     };
-  };
-  services = {
-    ananicy = {
-      enable = true;
-      package = pkgs.ananicy-cpp;
-      rulesProvider = pkgs.ananicy-rules-cachyos;
-    };
-    power-profiles-daemon.enable = false;
-    thermald.enable = true;
   };
 }

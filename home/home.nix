@@ -1,10 +1,56 @@
 { pkgs, ... }:
 {
   catppuccin = {
-    autoEnable = true;
     enable = true;
+    autoEnable = true;
+
     flavor = "mocha";
     accent = "pink";
+
+    firefox.enable = true;
+    bat.enable = true;
+    btop.enable = true;
+    cursors.enable = true;
+    eza.enable = true;
+    gtk.icon.enable = true;
+    lazygit.enable = true;
+    mpv.enable = true;
+    obs.enable = true;
+    spotify-player.enable = true;
+    starship.enable = true;
+    thunderbird.enable = true;
+    tmux.enable = true;
+    zsh-syntax-highlighting.enable = true;
+  };
+  gtk = {
+    enable = true;
+    theme = {
+      name = "catppuccin-mocha-pink-standard";
+      package = pkgs.catppuccin-gtk.override {
+        size = "standard";
+        accents = [ "pink" ];
+        variant = "mocha";
+      };
+    };
+    gtk3 = {
+      extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+      };
+    };
+    gtk4 = {
+      theme = {
+        name = "catppuccin-mocha-pink-standard";
+        package = pkgs.catppuccin-gtk.override {
+          size = "standard";
+          accents = [ "pink" ];
+          variant = "mocha";
+        };
+      };
+
+      extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+      };
+    };
   };
   programs = {
     home-manager.enable = true;
@@ -120,35 +166,35 @@
           "aliases"
           "tmux"
           "vi-mode"
-          "colored-man-pages"
+          # "colored-man-pages"
           "zoxide"
-          "dotnet"
-          "composer"
-          "laravel"
-          "node"
-          "npm"
-          "docker"
-          "docker-compose"
-          "web-search"
+          # "dotnet"
+          # "composer"
+          # "laravel"
+          # "node"
+          # "npm"
+          # "docker"
+          # "docker-compose"
+          # "web-search"
           "vi-mode"
           "ssh"
           "rsync"
-          "redis-cli"
-          "python"
-          "postgres"
-          "pip"
-          "npm"
-          "ng"
-          "nestjs"
-          "mongocli"
-          "kitty"
-          "git-lfs"
-          "github"
-          "gitfast"
-          "gh"
-          "fzf"
-          "uv"
-          "flutter"
+          # "redis-cli"
+          # "python"
+          # "postgres"
+          # "pip"
+          # "npm"
+          # "ng"
+          # "nestjs"
+          # "mongocli"
+          # "kitty"
+          # "git-lfs"
+          # "github"
+          # "gitfast"
+          # "gh"
+          # "fzf"
+          # "uv"
+          # "flutter"
           "eza"
           "emoji"
           "emoji-clock"
@@ -174,7 +220,8 @@
       newSession = true;
       escapeTime = 10;
       customPaneNavigationAndResize = true;
-      terminal = "tmux-256color";
+      # terminal = "tmux-256color";
+      # terminal = "xterm-kitty:RGB";
       extraConfig = ''
         # set-option -sa terminal-features "xterm-kitty:RGB"
         # set-option -g focus-events on
@@ -241,7 +288,7 @@
         # set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
         # set -g @plugin 'wfxr/tmux-fzf-url'
         # set -g @plugin 'erikw/tmux-powerline'
-        set -g @catppuccin_flavour 'mocha' # or frappe, macchiato, mocha
+        # set -g @catppuccin_flavour 'mocha' # or frappe, macchiato, mocha
         # set -g @catppuccin_window_status_enable "yes"
         # set -g @catppuccin_window_status_icon_enable "yes"
         # set -g @catppuccin_status_default "yes"
@@ -350,8 +397,8 @@
         enable_audio_bell = false;
         confirm_os_window_close = 0;
         window_padding_width = 5;
-        background_opacity = "0.75";
-        background_blur = "32";
+        # background_opacity = "0.75";
+        # background_blur = "32";
       };
       themeFile = "Catppuccin-Mocha";
     };

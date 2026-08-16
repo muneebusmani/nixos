@@ -21,6 +21,7 @@
     ./system/wifi_bluetooth.nix
     ./system/nordvpn.nix
     ./system/theme.nix
+    ./system/plymouth.nix
   ];
   services.libinput.enable = true;
   users.users."muneeb" = {
