@@ -1,8 +1,6 @@
 { pkgs, lib, ... }: {
   services = {
     displayManager.sddm = {
-      # displayManager.cosmic-greeter.enable = true;
-      # theme = "${pkgs.catppuccin-sddm-corners}/share/sddm/themes/catppuccin-corners";
       enable = true;
       theme = lib.mkForce "catppuccin-sddm-corners";
       extraPackages = with pkgs; [
@@ -16,10 +14,10 @@
           InputMethod = "";
         };
       };
-
     };
-    desktopManager.cosmic.enable = true;
+
     tumbler.enable = true;
+
     xserver = {
       enable = true;
       xkb = {
@@ -28,18 +26,49 @@
       };
     };
   };
+
+  # Enable Hyprland module
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  # Hint Electron apps to run on Wayland natively
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   environment = {
     systemPackages = with pkgs; [
-      cosmic-ext-ctl
-      cosmic-ext-tweaks
-      cosmic-ext-calculator
-      cosmic-ext-applet-minimon
-      cosmic-ext-applet-sysinfo
-      cosmic-ext-applet-weather
-      cosmic-ext-applet-caffeine
-      cosmic-ext-applet-privacy-indicator
-      cosmic-ext-applet-external-monitor-brightness
+      # SDDM Theme
       catppuccin-sddm-corners
+
+      # Core Wayland & Hyprland UI
+      waybar
+      rofi-wayland
+      swww # Wallpaper daemon
+
+      # Screen & Session Management
+      hypridle
+      hyprlock
+      wlogout
+      grimblast # Screenshots
+      slurp # Screen area selection
+
+      # Clipboard (Replaces the broken COSMIC applet)
+      wl-clipboard
+      cliphist
+
+      # Theming & Terminal
+      nwg-look
+      wallust
+
+      # JaKooLit / LinuxBeginnings Script Dependencies
+      jq
+      polkit_gnome
+      networkmanagerapplet
+      pamixer
+      playerctl
+      brightnessctl
+      blueman
     ];
   };
 
