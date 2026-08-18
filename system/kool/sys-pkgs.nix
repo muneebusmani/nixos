@@ -45,8 +45,6 @@
       tumbler
     ];
   };
-  # nixpkgs.config.allowUnfree = true;
-
   systemd.user.services.polkit-agent =
     let
       polkitAgentScript = pkgs.writeShellScript "polkit-agent" ''

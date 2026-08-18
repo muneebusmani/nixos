@@ -3,8 +3,6 @@
   ...
 }:
 {
-  nixpkgs.config.allowUnfree = true;
-
   # Enable the official NixOS service
   services.nordvpn.enable = true;
 

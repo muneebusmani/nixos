@@ -5,8 +5,6 @@
   ...
 }:
 {
-  nixpkgs.config.allowUnfree = true;
-
   # Use the proprietary driver, not nouveau
   services.xserver.videoDrivers = [ "nvidia" ];
 

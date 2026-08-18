@@ -9,6 +9,10 @@
     ./starship.nix
     ./git.nix
     ./kitty.nix
+    ./packages.nix
+    ./mcfly.nix
+    ./ideavimrc.nix
+    ./nvidia-offload.nix
 
   ];
 }

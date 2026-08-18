@@ -16,49 +16,29 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixos-hardware = {
-    #   url = "github:NixOS/nixos-hardware";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    catppuccin.url = "github:catppuccin/nix";
-    # hyprmod-src = {
-    #   url = "github:BlueManCZ/hyprmod";
-    #   flake = false;
-    # };
-
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
       self,
       nixpkgs,
-      # nixos-hardware,
       home-manager,
       nur,
       catppuccin,
       spicetify-nix,
-      # hyprmod-src,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-      };
+      pkgs = nixpkgs.legacyPackages.${system};
       waybarWeatherPkg = pkgs.callPackage ./system/kool/pkgs/waybar-weather.nix { };
-      # hyprlandBindings = pkgs.callPackage ./system/kool/pkgs/hyprland-python-bindings.nix { };
-      # hyprmodPkg = pkgs.callPackage ./system/kool/pkgs/hyprmod.nix {
-      #   hyprmodSrc = hyprmod-src;
-      #   inherit hyprlandBindings;
-      # };
-
     in
     {
       packages.${system} = {
         waybar-weather = waybarWeatherPkg;
-        # hyprmod = hyprmodPkg;
       };
 
       nixosConfigurations = {
@@ -68,17 +48,31 @@
             inherit inputs;
           };
           modules = [
-            ./configuration.nix
-            # spicetify-nix.nixosModules.default
+            # NixOS Configuration
+            ./system
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin
+
+            # Home Manager Configuration
             {
-              home-manager.sharedModules = [
-                catppuccin.homeModules.catppuccin
-                spicetify-nix.homeManagerModules.default
-              ];
+              home-manager = {
+                useGlobalPkgs = true;
+                extraSpecialArgs = { inherit inputs; };
+                useUserPackages = true;
+                users.muneeb = {
+                  imports = [
+                    ./home
+                  ];
+                };
+                sharedModules = [
+                  catppuccin.homeModules.catppuccin
+                  spicetify-nix.homeManagerModules.default
+                ];
+
+              };
             }
+
           ];
         };
       };
