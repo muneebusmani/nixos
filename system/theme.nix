@@ -10,6 +10,7 @@
     accent = "pink";
     enableReleaseCheck = true;
     cache.enable = true;
+    gtk.icon.enable = false;
     cursors = {
       enable = true;
       accent = "pink";

@@ -3,16 +3,14 @@
   catppuccin = {
     enable = true;
     autoEnable = true;
-
     flavor = "mocha";
     accent = "pink";
-
     firefox.enable = true;
     bat.enable = true;
     btop.enable = true;
     cursors.enable = true;
     eza.enable = true;
-    gtk.icon.enable = true;
+    gtk.icon.enable = false;
     lazygit.enable = true;
     mpv.enable = true;
     obs.enable = true;
@@ -31,6 +29,10 @@
         accents = [ "pink" ];
         variant = "mocha";
       };
+    };
+    iconTheme = {
+      name = "Tela-circle-dracula-dark";
+      # package = pkgs.papirus-icon-theme;
     };
     gtk3 = {
       extraConfig = {
@@ -348,16 +350,44 @@
       };
     };
     delta.enable = true;
+    # git = {
+    #   enable = true;
+    #   lfs.enable = true;
+    #   settings = {
+    #     user = {
+    #       name = "Muneeb Usmani";
+    #       email = "muneebusmani8355@gmail.com";
+    #
+    #     };
+    #   };
+    # };
     git = {
       enable = true;
       lfs.enable = true;
-      settings = {
-        user = {
-          name = "Muneeb Usmani";
-          email = "muneebusmani8355@gmail.com";
-
-        };
-      };
+      settings = [
+        {
+          user = {
+            name = "Muneeb Usmani";
+            email = "muneebusmani8355@gmail.com";
+          };
+        }
+        {
+          credential."https://github.com" = {
+            helper = [
+              ""
+              "!${pkgs.gh}/bin/gh auth git-credential"
+            ];
+          };
+        }
+        {
+          credential."https://gist.github.com" = {
+            helper = [
+              ""
+              "!${pkgs.gh}/bin/gh auth git-credential"
+            ];
+          };
+        }
+      ];
     };
     kitty = {
       extraConfig = "

@@ -1,0 +1,44 @@
+# ==================================================
+#  KoolDots (2026)
+#  Project URL: https://github.com/LinuxBeginnings
+#  License: GNU GPLv3
+#  SPDX-License-Identifier: GPL-3.0-or-later
+# ==================================================
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  environment = {
+    systemPackages = with pkgs; [
+      # inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+      quickshell
+      # Qt6 dependencies for quickshell
+      qt6.qtbase
+      qt6.qtdeclarative
+      qt6.qt5compat
+      qt6.qtwayland
+      qt6.qtsvg
+      qt6.qtmultimedia
+    ];
+
+    # necessary environment variables for QML module resolution
+    variables = {
+      QML2_IMPORT_PATH = lib.mkDefault (
+        lib.concatStringsSep ":" [
+          "${pkgs.qt6.qtdeclarative}/lib/qt-6/qml"
+          "${pkgs.qt6.qt5compat}/lib/qt-6/qml"
+        ]
+      );
+    };
+
+    # ensure Qt applications work properly on Wayland
+    sessionVariables = {
+      QT_QPA_PLATFORM = "wayland;xcb";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    };
+  };
+}

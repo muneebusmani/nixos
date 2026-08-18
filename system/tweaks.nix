@@ -4,7 +4,7 @@
   # ];
   # Important: Add the resume kernel parameter
   boot.kernelParams = [
-    "resume=UUID=6efbc3a7-ef84-4d45-ab54-246b426e851b"
+    "resume=UUID=8ad0ff21-968a-4862-95d2-a50cc09e5351"
     "intel_pstate=passive"
   ];
 
@@ -21,7 +21,7 @@
 
   services = {
     thermald.enable = true;
-    # power-profiles-daemon.enable = true;
+    power-profiles-daemon.enable = true;
     system76-scheduler.enable = true;
   };
 

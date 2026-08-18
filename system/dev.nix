@@ -110,7 +110,7 @@
     lua5_1
 
     # --- Database & DevOps Tools ---
-    mongosh
+    # mongosh
     # dbeaver-bin
     postman
     docker-compose

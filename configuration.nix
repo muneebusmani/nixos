@@ -22,7 +22,9 @@
     ./system/nordvpn.nix
     ./system/theme.nix
     ./system/plymouth.nix
+    ./system/kool
   ];
+  gtk.iconCache.enable = true;
   services.libinput.enable = true;
   users.users."muneeb" = {
     isNormalUser = true;
@@ -30,6 +32,13 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "libvirtd"
+      "scanner"
+      "lp"
+      "video"
+      "input"
+      "audio"
+
     ];
   };
   # home-manager.users.muneeb = import ./home/home.nix;
@@ -43,6 +52,10 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # nix.settings = {
+  # 	always-allow-substitutes = true;
+  # 	builders-use-substitutes = true;
+  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

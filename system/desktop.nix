@@ -43,8 +43,8 @@
 
       # Core Wayland & Hyprland UI
       waybar
-      rofi-wayland
-      swww # Wallpaper daemon
+      rofi
+      awww # Wallpaper daemon
 
       # Screen & Session Management
       hypridle
