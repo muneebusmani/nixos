@@ -10,6 +10,7 @@
     ./quickshell.nix
     ./sys-pkgs.nix
     ./overlays.nix
+    ./nh.nix
     # ./hyprmod.nix
   ];
 
