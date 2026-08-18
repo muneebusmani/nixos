@@ -46,7 +46,11 @@
     extraSpecialArgs = { inherit inputs; };
     # useGlobalPkgs = true;
     useUserPackages = true;
-    users.muneeb = import ./home/home.nix;
+    users.muneeb = {
+      imports = [
+        ./home
+      ];
+    };
 
   };
 

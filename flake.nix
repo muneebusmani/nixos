@@ -69,13 +69,14 @@
           };
           modules = [
             ./configuration.nix
-            spicetify-nix.nixosModules.default
+            # spicetify-nix.nixosModules.default
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin
             {
               home-manager.sharedModules = [
                 catppuccin.homeModules.catppuccin
+                spicetify-nix.homeManagerModules.default
               ];
             }
           ];

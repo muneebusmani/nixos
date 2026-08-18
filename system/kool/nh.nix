@@ -12,7 +12,7 @@
       enable = false;
       extraArgs = "--keep-since 7d --keep 5";
     };
-    flake = "/home/$USER/dotfiles";
+    flake = "/home/muneeb/dotfiles";
   };
 
   environment.systemPackages = with pkgs; [

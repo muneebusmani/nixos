@@ -9,7 +9,7 @@ in
     [
       vlc
       libreoffice
-      spotify
+      # spotify
       discord
       kitty
       bat
@@ -31,7 +31,7 @@ in
       obs-studio
       spotify-player
       thunderbird
-      spicetify-cli
+      # spicetify-cli
       powertop
 
     ]

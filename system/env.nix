@@ -1,6 +1,7 @@
 { _, ... }: {
   environment = {
     sessionVariables = {
+      # NH_FLAKE = "/home/$USER/dotfiles";
       NIXOS_OZONE_WL = "1";
       PATH = [
         "$HOME/.npm-global/bin"

@@ -101,6 +101,7 @@
     # Hyprland Stuff
     hypridle
     hyprpolkitagent
+    hyprsunset
     tela-circle-icon-theme
     #pyprland
     # uwsm
