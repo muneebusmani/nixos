@@ -50,6 +50,7 @@
           modules = [
             # NixOS Configuration
             ./system
+            ./modules
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin

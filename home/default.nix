@@ -12,7 +12,6 @@
     ./packages.nix
     ./mcfly.nix
     ./ideavimrc.nix
-    ./nvidia-offload.nix
 
   ];
 }

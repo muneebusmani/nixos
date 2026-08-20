@@ -1,6 +1,10 @@
 { pkgs, ... }: {
   gtk = {
     enable = true;
+    font = {
+      name = "JetBrainsMono Nerd Font Propo";
+      # size = 16;
+    };
     theme = {
       name = "catppuccin-mocha-pink-standard";
       package = pkgs.catppuccin-gtk.override {
@@ -9,10 +13,10 @@
         variant = "mocha";
       };
     };
-    iconTheme = {
-      name = "Tela-circle-dracula-dark";
-      # package = pkgs.papirus-icon-theme;
-    };
+    # iconTheme = {
+    # name = "Tela-circle-dracula-dark";
+    # package = pkgs.papirus-icon-theme;
+    # };
     gtk3 = {
       extraConfig = {
         gtk-application-prefer-dark-theme = true;

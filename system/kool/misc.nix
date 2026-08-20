@@ -9,48 +9,48 @@
   ...
 }:
 {
-  environment = {
-
-    # Environment variables as a fallback for apps not honoring gsettings
-    # Avoid hard overrides so tools like nwg-look can preview/apply themes dynamically.
-    variables = {
-      # GTK2_RC_FILES = "${pkgs.gnome-themes-extra}/share/themes/Adwaita-dark/gtk-2.0/gtkrc"; # GTK2 fallback only
-      # QT_QPA_PLATFORMTHEME = "gtk3"; # Qt apps follow GTK portal/theme
-    };
-
-    # Cursor defaults for XDG/Wayland sessions
-    # sessionVariables = {
-    #   XCURSOR_THEME = "Bibata-Modern-Classic";
-    #   XCURSOR_SIZE = "24";
-    # };
-
-    # Set system dconf defaults so new users prefer dark by default.
-    # Users can still override per-user via gsettings.
-    etc = {
-      "dconf/profile/user".text = ''
-        user-db:user
-        system-db:local
-      '';
-      "dconf/db/local.d/00_theme".text = ''
-        [org/gnome/desktop/interface]
-        color-scheme='prefer-dark'
-        gtk-theme='catppuccin-mocha-pink-standard'
-        icon-theme='Tela-circle-dark'
-        cursor-theme='Catppuccin-Mocha-Pink'
-      '';
-    };
-  };
-
-  # Rebuild the dconf database at activation to apply system defaults
-  system.activationScripts.dconfUpdate = {
-    # Ensure /etc is populated (including /etc/dconf/...) before running dconf update
-    deps = [ "etc" ];
-    text = ''
-      if [ -x ${pkgs.dconf}/bin/dconf ]; then
-        if [ -d /etc/dconf/db ]; then
-          ${pkgs.dconf}/bin/dconf update || true
-        fi
-      fi
-    '';
-  };
+  # environment = {
+  #
+  #   # Environment variables as a fallback for apps not honoring gsettings
+  #   # Avoid hard overrides so tools like nwg-look can preview/apply themes dynamically.
+  #   variables = {
+  #     # GTK2_RC_FILES = "${pkgs.gnome-themes-extra}/share/themes/Adwaita-dark/gtk-2.0/gtkrc"; # GTK2 fallback only
+  #     QT_QPA_PLATFORMTHEME = "qt6ct"; # Qt apps follow GTK portal/theme
+  #   };
+  #
+  #   # Cursor defaults for XDG/Wayland sessions
+  #   # sessionVariables = {
+  #   #   XCURSOR_THEME = "Bibata-Modern-Classic";
+  #   #   XCURSOR_SIZE = "24";
+  #   # };
+  #
+  #   # Set system dconf defaults so new users prefer dark by default.
+  #   # Users can still override per-user via gsettings.
+  #   etc = {
+  #     "dconf/profile/user".text = ''
+  #       user-db:user
+  #       system-db:local
+  #     '';
+  #     "dconf/db/local.d/00_theme".text = ''
+  #       [org/gnome/desktop/interface]
+  #       color-scheme='prefer-dark'
+  #       gtk-theme='Colloid-Dark'
+  #       icon-theme='Papirus-dark'
+  #       cursor-theme='Catppuccin-Mocha-Pink'
+  #     '';
+  #   };
+  # };
+  #
+  # # Rebuild the dconf database at activation to apply system defaults
+  # system.activationScripts.dconfUpdate = {
+  #   # Ensure /etc is populated (including /etc/dconf/...) before running dconf update
+  #   deps = [ "etc" ];
+  #   text = ''
+  #     if [ -x ${pkgs.dconf}/bin/dconf ]; then
+  #       if [ -d /etc/dconf/db ]; then
+  #         ${pkgs.dconf}/bin/dconf update || true
+  #       fi
+  #     fi
+  #   '';
+  # };
 }

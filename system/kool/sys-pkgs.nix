@@ -101,6 +101,10 @@
     hyprpolkitagent
     hyprsunset
     tela-circle-icon-theme
+    papirus-icon-theme
+    beauty-line-icon-theme
+    colloid-gtk-theme
+    bibata-cursors
     #pyprland
     # uwsm
     hyprlang

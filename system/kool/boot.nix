@@ -37,7 +37,7 @@
 
     # Make /tmp a tmpfs
     tmp = {
-      useTmpfs = false;
+      useTmpfs = true;
       tmpfsSize = "30%";
     };
 

@@ -63,13 +63,13 @@
         aspnetcore_8_0
         aspnetcore_9_0
         aspnetcore_10_0
-        aspnetcore_11_0
+        # aspnetcore_11_0
         sdk_6_0
         sdk_7_0
         sdk_8_0
         sdk_9_0
         sdk_10_0
-        sdk_11_0
+        # sdk_11_0
       ]
     )
     mono
@@ -127,9 +127,9 @@
     lmstudio
     vscode-fhs
     zed-editor-fhs
-    jetbrains.phpstorm
-    jetbrains.webstorm
-    jetbrains.rider
+    # jetbrains.phpstorm
+    # jetbrains.webstorm
+    # jetbrains.rider
     git
     fzf
     ripgrep

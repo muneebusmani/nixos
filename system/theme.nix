@@ -10,11 +10,12 @@
     accent = "pink";
     enableReleaseCheck = true;
     cache.enable = true;
-    gtk.icon.enable = false;
+    gtk.icon.enable = true;
     cursors = {
-      enable = true;
-      accent = "pink";
-      flavor = "mocha";
+      # enable = true;
+      enable = false;
+      # accent = "pink";
+      # flavor = "mocha";
     };
   };
 }

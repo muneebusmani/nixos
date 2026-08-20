@@ -7,7 +7,7 @@
     firefox.enable = true;
     bat.enable = true;
     btop.enable = true;
-    cursors.enable = true;
+    cursors.enable = false;
     eza.enable = true;
     gtk.icon.enable = false;
     lazygit.enable = true;

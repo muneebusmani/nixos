@@ -4,12 +4,14 @@ let
 in
 {
   services.flatpak.enable = true;
+  services.upower.enable = true;
   environment.systemPackages =
     with pkgs;
     [
       vlc
       libreoffice
       # spotify
+      # zapzap
       discord
       kitty
       bat
@@ -17,17 +19,18 @@ in
       pciutils
       stremio-linux-shell
       stremio-service
+      gparted
       mpv
-      linux-wallpaperengine
+      # linux-wallpaperengine
       firefoxpwa
       tree
       catppuccin
       catppuccin-gtk
       catppuccin-discord
-      catppuccin-cursors
+      # catppuccin-cursors
       mesa-demos
       fastfetch
-      lxappearance
+      # lxappearance
       obs-studio
       spotify-player
       thunderbird
