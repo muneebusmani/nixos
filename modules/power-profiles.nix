@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -10,16 +11,26 @@ let
 in
 {
   boot.kernelParams = [ "intel_pstate=active" ];
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   powerManagement.powertop.enable = false;
   environment.systemPackages = [
     underwattCli
   ];
   specialisation = {
     ultra-power.configuration = {
+      powerManagement.cpuFreqGovernor = "powersave";
       system.nixos.tags = [ "ultra-power" ];
       systemd = {
         services = {
+          powertop-autotune = {
+            description = "Powertop autotune";
+            wantedBy = [ "multi-user.target" ];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+              ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
+            };
+          };
+
           cpu-epp-power = {
             wantedBy = [ "multi-user.target" ];
             serviceConfig.Type = "oneshot";
@@ -35,10 +46,15 @@ in
               "multi-user.target"
               "sleep.target"
             ];
-            after = [ "sleep.target" ];
+            after = [
+              "sleep.target"
+              "powertop-autotune.service"
+            ]; # ← KEY FIX
             serviceConfig.Type = "oneshot";
             script = ''
-              ${underwattCli}/bin/underwatt set --pl0 15 --pl1 20
+              ${underwattCli}/bin/underwatt set --pl1 20
+              sleep 0.1
+              ${underwattCli}/bin/underwatt set --pl0 15
             '';
           };
 
@@ -58,19 +74,17 @@ in
 
     moderate-power.configuration = {
       system.nixos.tags = [ "moderate-power" ];
+      powerManagement.cpuFreqGovernor = "powersave";
       systemd = {
         services = {
-          # Intel RAPL Power Limits
-          rapl-power-limit = {
-            wantedBy = [
-              "multi-user.target"
-              "sleep.target"
-            ];
-            after = [ "sleep.target" ];
-            serviceConfig.Type = "oneshot";
-            script = ''
-              ${underwattCli}/bin/underwatt set --pl0 28 --pl1 35
-            '';
+          powertop-autotune = {
+            description = "Powertop autotune";
+            wantedBy = [ "multi-user.target" ];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+              ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
+            };
           };
 
           # Set EPP to balance_power (snappy but battery aware)
@@ -81,6 +95,23 @@ in
               for cpu in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
                 echo "balance_power" > "$cpu" || true
               done
+            '';
+          };
+          # Intel RAPL Power Limits
+          rapl-power-limit = {
+            wantedBy = [
+              "multi-user.target"
+              "sleep.target"
+            ];
+            after = [
+              "sleep.target"
+              "powertop-autotune.service"
+            ]; # ← KEY FIX
+            serviceConfig.Type = "oneshot";
+            script = ''
+              ${underwattCli}/bin/underwatt set --pl1 35
+                sleep 0.1
+              ${underwattCli}/bin/underwatt set --pl0 28
             '';
           };
 
@@ -107,7 +138,6 @@ in
           ${underwattCli}/bin/underwatt set --pl0 45 --pl1 55
         '';
       };
-      powerManagement.cpuFreqGovernor = lib.mkForce "performance";
       systemd.services = {
         nvidia-overclock = {
           wantedBy = [ "multi-user.target" ];
@@ -130,6 +160,8 @@ in
           serviceConfig.ExecStart = "${nvidiaSmi} -i 0 -pm 1";
         };
       };
+      powerManagement.cpuFreqGovernor = lib.mkForce "performance";
+
     };
   };
 }

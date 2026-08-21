@@ -9,9 +9,13 @@
     gnumake
     wget
     curl
+    gitui
+    lazygit
+    lazydocker
 
     # Bleeding Edge TS Tooling
-    oxc # Provides oxlint and oxfmt
+    oxfmt # Provides oxlint and oxfmt
+    oxlint # Provides oxlint and oxfmt
     typescript-go # Provides tsgo LSP
     tsgolint # Provides tsgolint CLI
 

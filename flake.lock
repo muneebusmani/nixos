@@ -94,12 +94,26 @@
         "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1055335.e5bdc4a41d4c/nixexprs.tar.xz"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1787209939,
+        "narHash": "sha256-WvvHR4kSQLAbtouMC/ruZ5UpLwlUcY3K4FAllMN+yGk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "391b592eb44808b3bd0cb80bb71b63a5a118b8bb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_2",
         "systems": "systems"
       },
       "locked": {
@@ -208,11 +222,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787283512,
-        "narHash": "sha256-yLBQWxj2G5Sanq5hE6XCMnREekaDTZcb4z9VNs4IYnY=",
+        "lastModified": 1787286263,
+        "narHash": "sha256-/zC3rkpZkoqN95RNP4Ro9eJkytMOfu5qa9TdMQYLn/E=",
         "owner": "muneebusmani",
         "repo": "underwatt-cli-v2",
-        "rev": "04a8dec8b7cdfe7af2a3513fde975601bcb06269",
+        "rev": "e8d277d84738d7e81a534a86c679a5d345c06747",
         "type": "github"
       },
       "original": {

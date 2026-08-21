@@ -12,6 +12,5 @@
     ./packages.nix
     ./mcfly.nix
     ./ideavimrc.nix
-
   ];
 }

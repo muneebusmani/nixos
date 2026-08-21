@@ -22,7 +22,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     underwatt = {
       url = "github:muneebusmani/underwatt-cli-v2";
@@ -38,6 +38,7 @@
       catppuccin,
       spicetify-nix,
       underwatt,
+      nixvim,
       ...
     }@inputs:
     let
@@ -60,6 +61,7 @@
             # NixOS Configuration
             ./system
             ./modules
+            nixvim.nixosModules.nixvim
             {
               environment.systemPackages = [
                 underwatt.packages.${system}.default
