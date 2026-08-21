@@ -20,6 +20,14 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    underwatt = {
+      url = "github:muneebusmani/underwatt-cli-v2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -29,6 +37,7 @@
       nur,
       catppuccin,
       spicetify-nix,
+      underwatt,
       ...
     }@inputs:
     let
@@ -51,6 +60,11 @@
             # NixOS Configuration
             ./system
             ./modules
+            {
+              environment.systemPackages = [
+                underwatt.packages.${system}.default
+              ];
+            }
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin

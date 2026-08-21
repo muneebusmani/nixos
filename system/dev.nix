@@ -147,5 +147,6 @@
     nil
     nixfmt
     statix
+    rust-analyzer
   ];
 }
