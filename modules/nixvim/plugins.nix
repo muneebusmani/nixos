@@ -9,18 +9,20 @@
     # Snacks (Replaces Telescope, Nvim-tree, and dashboard)
     snacks = {
       enable = true;
+      autoLoad = true;
       settings = {
+        bigfile.enabled = true;
+        dashboard.enabled = true;
+        explorer.enabled = true;
         indent.enabled = true;
         input.enabled = true;
+        picker.enabled = true;
         notifier.enabled = true;
+        quickfile.enabled = true;
         scope.enabled = true;
         scroll.enabled = true;
+        statuscolumn.enabled = true;
         words.enabled = true;
-        bigfile.enabled = true;
-        quickfile.enabled = true;
-        dashboard.enabled = true;
-        picker.enable = true;
-        explorer.enable = true;
       };
     };
 
@@ -139,6 +141,8 @@
       enable = true;
       servers = {
         angularls.enable = true;
+        oxfmt.enable = true;
+        oxlint.enable = true;
         astro.enable = true;
         cssls.enable = true;
         dartls.enable = true;
@@ -146,7 +150,9 @@
         dockerls.enable = true;
         gopls.enable = true;
         html.enable = true;
-        intelephense.enable = true;
+        # intelephense.enable = true;
+        # phpactor.enable = true;
+        phpantom_lsp.enable = true;
         jdtls.enable = true;
         jsonls.enable = true;
         kotlin_language_server.enable = true;
@@ -160,7 +166,7 @@
           installCargo = false;
           installRustc = false;
         };
-        sqlls.enable = true;
+        sqls.enable = true;
         svelte.enable = true;
         tailwindcss.enable = true;
         taplo.enable = true;
@@ -168,7 +174,6 @@
         # Bleeding edge TS setup
         ts_ls.enable = false; # Disable old Node.js server
         tsgo.enable = true; # Enable new Go server
-
         yamlls.enable = true;
       };
     };
@@ -364,7 +369,7 @@
         golang.enable = true;
         python.enable = true;
         dotnet.enable = true;
-        # dart.enable = true;
+        dart.enable = true;
         phpunit.enable = true;
         pest.enable = true;
         jest.enable = true;

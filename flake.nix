@@ -58,7 +58,6 @@
             inherit inputs;
           };
           modules = [
-            # NixOS Configuration
             ./system
             ./modules
             nixvim.nixosModules.nixvim

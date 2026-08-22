@@ -1,7 +1,8 @@
-{ _, ... }:
+{ pkgs, ... }:
 {
   programs = {
     nixvim = {
+      nixpkgs.pkgs = pkgs;
       enable = true;
       defaultEditor = true;
       globals.loaded_perl_provider = 0;
