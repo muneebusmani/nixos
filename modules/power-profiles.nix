@@ -10,8 +10,8 @@ let
   underwattCli = inputs.underwatt.packages.x86_64-linux.default;
 in
 {
-  boot.kernelParams = [ "intel_pstate=active" ];
-  powerManagement.powertop.enable = false;
+  # boot.kernelParams = [ "intel_pstate=active" ];
+  # powerManagement.powertop.enable = false;
   environment.systemPackages = [
     underwattCli
   ];
@@ -21,15 +21,15 @@ in
       system.nixos.tags = [ "ultra-power" ];
       systemd = {
         services = {
-          powertop-autotune = {
-            description = "Powertop autotune";
-            wantedBy = [ "multi-user.target" ];
-            serviceConfig = {
-              Type = "oneshot";
-              RemainAfterExit = true;
-              ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
-            };
-          };
+          # powertop-autotune = {
+          #   description = "Powertop autotune";
+          #   wantedBy = [ "multi-user.target" ];
+          #   serviceConfig = {
+          #     Type = "oneshot";
+          #     RemainAfterExit = true;
+          #     ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
+          #   };
+          # };
 
           cpu-epp-power = {
             wantedBy = [ "multi-user.target" ];
@@ -48,13 +48,13 @@ in
             ];
             after = [
               "sleep.target"
-              "powertop-autotune.service"
+              # "powertop-autotune.service"
             ]; # ← KEY FIX
             serviceConfig.Type = "oneshot";
             script = ''
-              ${underwattCli}/bin/underwatt set --pl1 20
+              ${underwattCli}/bin/underwatt set --pl1 15
               sleep 0.1
-              ${underwattCli}/bin/underwatt set --pl0 15
+              ${underwattCli}/bin/underwatt set --pl0 20
             '';
           };
 
@@ -68,7 +68,7 @@ in
         blacklist nvidia_drm
         blacklist nvidia_modeset
       '';
-      hardware.nvidia.modesetting.enable = false;
+      hardware.nvidia.modesetting.enable = lib.mkForce false;
       services.xserver.videoDrivers = [ "modesetting" ];
     };
 
@@ -77,15 +77,15 @@ in
       powerManagement.cpuFreqGovernor = "powersave";
       systemd = {
         services = {
-          powertop-autotune = {
-            description = "Powertop autotune";
-            wantedBy = [ "multi-user.target" ];
-            serviceConfig = {
-              Type = "oneshot";
-              RemainAfterExit = true;
-              ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
-            };
-          };
+          # powertop-autotune = {
+          #   description = "Powertop autotune";
+          #   wantedBy = [ "multi-user.target" ];
+          #   serviceConfig = {
+          #     Type = "oneshot";
+          #     RemainAfterExit = true;
+          #     ExecStart = "${pkgs.powertop}/bin/powertop --auto-tune";
+          #   };
+          # };
 
           # Set EPP to balance_power (snappy but battery aware)
           cpu-epp-moderate = {
@@ -105,13 +105,13 @@ in
             ];
             after = [
               "sleep.target"
-              "powertop-autotune.service"
+              # "powertop-autotune.service"
             ]; # ← KEY FIX
             serviceConfig.Type = "oneshot";
             script = ''
-              ${underwattCli}/bin/underwatt set --pl1 35
+              ${underwattCli}/bin/underwatt set --pl1 28
                 sleep 0.1
-              ${underwattCli}/bin/underwatt set --pl0 28
+              ${underwattCli}/bin/underwatt set --pl0 35
             '';
           };
 
@@ -135,7 +135,7 @@ in
         after = [ "sleep.target" ];
         serviceConfig.Type = "oneshot";
         script = ''
-          ${underwattCli}/bin/underwatt set --pl0 45 --pl1 55
+          ${underwattCli}/bin/underwatt set --pl0 55 --pl1 45
         '';
       };
       systemd.services = {

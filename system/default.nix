@@ -18,7 +18,11 @@
     ./nordvpn.nix
     ./theme.nix
     ./plymouth.nix
+    ./warp.nix
+    ./waydroid.nix
+    ./NUR.nix
     ./kool
+
   ];
   system.stateVersion = "26.05";
 }

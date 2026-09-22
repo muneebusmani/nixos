@@ -124,7 +124,7 @@
     ddcutil # Needed for ExternalBrightness script
 
     #  Apps
-    power-profiles-daemon
+    # power-profiles-daemon
     loupe
     appimage-run
     bc

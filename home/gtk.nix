@@ -2,7 +2,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font Propo";
+      name = "Noto Nerd Font";
       # size = 16;
     };
     theme = {

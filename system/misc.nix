@@ -72,6 +72,25 @@
       libusb1
       libnotify
       glib
+      gnutls
+      appimage-run
+      webkitgtk_4_1
+      gtk3
+      libsoup_3
+      libepoxy
+      glib
+      cairo
+      pango
+      harfbuzz
+      at-spi2-core
+      gdk-pixbuf
+      fontconfig
+      gcc.cc.lib
+      libva
+      libdrm
+      zlib-ng
+      # flutter
+
     ];
   };
   systemd = {

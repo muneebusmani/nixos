@@ -15,8 +15,8 @@
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 
   services = {
-    thermald.enable = true;
-    power-profiles-daemon.enable = true;
+    # thermald.enable = true;
+    power-profiles-daemon.enable = false;
     system76-scheduler.enable = true;
   };
 

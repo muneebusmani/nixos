@@ -1,12 +1,12 @@
 { pkgs, config, ... }: {
   # BOOT related stuff
   boot = {
-    kernelParams = [
-      "systemd.mask=dev-tpmrm0.device" # this is to mask that stupid 1.5 mins systemd bug
-      "nowatchdog"
-      "modprobe.blacklist=sp5100_tco" # watchdog for AMD
-      "modprobe.blacklist=iTCO_wdt" # watchdog for Intel
-    ];
+    # kernelParams = [
+    #   "systemd.mask=dev-tpmrm0.device" # this is to mask that stupid 1.5 mins systemd bug
+    #   "nowatchdog"
+    #   "modprobe.blacklist=sp5100_tco" # watchdog for AMD
+    #   "modprobe.blacklist=iTCO_wdt" # watchdog for Intel
+    # ];
 
     # This is for OBS Virtual Cam Support
     kernelModules = [ "v4l2loopback" ];

@@ -46,6 +46,7 @@
       nerd-fonts.fira-mono
       nerd-fonts.space-mono
       nerd-fonts.ubuntu
+      nerd-fonts.noto
       powerline-fonts
       roboto
       roboto-mono

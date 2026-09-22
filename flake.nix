@@ -28,6 +28,13 @@
       url = "github:muneebusmani/underwatt-cli-v2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # custom-packages = {
+    #   # url = "github:Rishabh5321/custom-packages-flake";
+    #   # url = "github:muneebusmani/custom-packages-flake";
+    #   url = "path:/home/muneeb/custom-packages-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #
+    # };
   };
   outputs =
     {
@@ -39,6 +46,7 @@
       spicetify-nix,
       underwatt,
       nixvim,
+      # custom-packages,
       ...
     }@inputs:
     let
@@ -61,12 +69,13 @@
             ./system
             ./modules
             nixvim.nixosModules.nixvim
+            nur.modules.nixos.default
             {
               environment.systemPackages = [
                 underwatt.packages.${system}.default
+                # custom-packages.packages.${pkgs.stdenv.hostPlatform.system}.anymex
               ];
             }
-            nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin
 
@@ -88,7 +97,9 @@
 
               };
             }
-
+            ({ lib, ... }: {
+              powerManagement.cpuFreqGovernor = lib.mkForce "performance";
+            })
           ];
         };
       };

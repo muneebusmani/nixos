@@ -1,6 +1,6 @@
 { _, ... }: {
   imports = [
-    ./power-profiles.nix
+    # ./power-profiles.nix
     # ./nixvim
   ];
 }

@@ -10,12 +10,4 @@
     extraGroups = [ "nordvpn" ];
   };
 
-  networking = {
-    wireguard.enable = true;
-    firewall = {
-      checkReversePath = false;
-      allowedTCPPorts = [ 443 ];
-      allowedUDPPorts = [ 1194 ];
-    };
-  };
 }

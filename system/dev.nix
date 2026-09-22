@@ -50,6 +50,23 @@
     };
   };
 
+  # environment.sessionVariables = {
+  #   PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+  #   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
+  #   PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+  #   PLAYWRIGHT_LAUNCH_OPTIONS_EXECUTABLE_PATH = "${pkgs.google-chrome}/bin/google-chrome-stable";
+  #
+  #   # --- Add these overrides for the FHS Sandbox Error ---
+  #   # Forces the language server to use persistent un-isolated home directories
+  #   XDG_CACHE_HOME = "$HOME/.cache";
+  #   XDG_DATA_HOME = "$HOME/.local/share";
+  #   XDG_STATE_HOME = "$HOME/.local/state";
+  #   XDG_CONFIG_HOME = "$HOME/.config";
+  #
+  #   # Specific bypass for Antigravity's Go-based background language server
+  #   ANTIGRAVITY_DATA_DIR = "$HOME/.config/antigravity";
+  # };
+
   # ---------------------------------------------------------------------------
   # Development Packages (Runtimes, DevOps, DB Tools, LSPs)
   # ---------------------------------------------------------------------------
@@ -119,11 +136,18 @@
     gh
 
     # --- Editors & CLI Utilities ---
+    # antigravity-hub
+    # antigravity-acp
     codex
     antigravity-cli
-    antigravity-ide-fhs
+    playwright-driver
+    # antigravity-ide-fhs
+    antigravity-ide
+    claude-code
+    google-chrome
+    chromium
     # gemini-cli
-    ollama
+    # ollama
     lmstudio
     vscode-fhs
     zed-editor-fhs

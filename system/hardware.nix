@@ -9,8 +9,12 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+  hardware = {
+    enableAllFirmware = true;
+    bluetooth.enable = true;
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  };
   boot = {
-
     initrd.availableKernelModules = [
       "xhci_pci"
       "ahci"
@@ -19,7 +23,10 @@
       "rtsx_pci_sdmmc"
     ];
     initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [
+      "kvm-intel"
+      "btusb"
+    ];
     extraModulePackages = [ ];
   };
   fileSystems = {
@@ -56,5 +63,4 @@
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

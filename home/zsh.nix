@@ -101,6 +101,7 @@
         "aliases"
         "tmux"
         "vi-mode"
+        "systemd"
         # "colored-man-pages"
         "zoxide"
         # "dotnet"
